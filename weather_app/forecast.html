@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather App - Forecast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body id="body">
+  <header>
+    <h1>📆 5-Day Forecast</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="forecast.html" class="active">Forecast</a>
+      <a href="map.html">Map</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="input-group">
+      <input type="text" id="forecastCityInput" placeholder="Enter city" />
+      <button onclick="getForecast()">Get Forecast</button>
+    </div>
+
+    <section id="forecastCards" class="forecast"></section>
+
+    <canvas id="forecastChart" width="600" height="300"></canvas>
+
+    <div id="forecastSummary" class="weather-card"></div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/forecast.js"></script>
+</body>
+</html>
