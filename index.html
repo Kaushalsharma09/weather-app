@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather App - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body id="body">
+  <header>
+    <h1>🌦️ Weatherly</h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="forecast.html">Forecast</a>
+      <a href="map.html">Map</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="input-group">
+      <input type="text" id="cityInput" placeholder="Enter city" />
+      <button onclick="getWeather()">Search</button>
+      <button onclick="startVoiceInput()">🎤</button>
+      <button onclick="getLocationWeather()">📍</button>
+    </div>
+
+    <div class="toggles">
+      <button id="unitToggle" onclick="toggleTempUnit()">°C</button>
+      <select id="languageSelect" onchange="setLanguage(this.value)">
+        <option value="en" selected>English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <button onclick="toggleDarkMode()">🌓</button>
+    </div>
+
+    <section id="weatherDisplay" class="weather-card"></section>
+
+    <div id="localTime"></div>
+    <canvas id="windCompass" width="120" height="120"></canvas>
+
+    <section class="favorites">
+      <h2>⭐ Favorite Cities</h2>
+      <input type="text" id="favoriteInput" placeholder="Add favorite city" />
+      <button onclick="addFavorite()">Add</button>
+      <ul id="favoritesList"></ul>
+    </section>
+  </main>
+
+  <audio id="weatherAudio" loop></audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/weather.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log("Service Worker registered."))
+      .catch(err => console.error("Service Worker failed:", err));
+  }
+</script>
+
+</body>
+</html>
